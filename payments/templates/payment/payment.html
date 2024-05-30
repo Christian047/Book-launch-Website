@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block content %}
+<p class="mb-5"></p>
+<section class="pb-4 text-center">
+  <div class="bg-white border rounded-5">
+    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+      <form style="width: 25rem;" action="{% url 'initiate_payment' single_price.pk %}" method="POST">
+        <h2>Embark on a Literary Journey</h2>
+        {% csrf_token %}
+        <!-- Amount input (read-only) -->
+        <div class="form-outline mb-4">
+          <input type="number" min="1" required id="form2Example2" placeholder="Amount" class="form-control" name="amount" value="{{ single_price_int }}" readonly>
+          <label class="form-label" for="form2Example2" style="margin-left: 0px;"></label>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div>
+        </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" placeholder="Email" id="form2Example1" class="form-control" name="email" required>
+                  <label class="form-label" for="form2Example1" style="margin-left: 0px;"></label>
+                  <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div>
+                </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="submit" class="btn btn-primary mb-4">Fund</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</section>
+{% endblock content %}

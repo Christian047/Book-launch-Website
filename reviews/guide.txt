@@ -1,0 +1,79 @@
+To call the average rating in the  home views
+
+review = Review.objects.all()
+        average_rating = Review.objects.aggregate(Avg('rating'))['rating__avg']
+
+
+add average_rating in the context
+
+
+
+
+class Home(View):
+    def get(self, request):
+        review = Review.objects.all()
+        _________________________________________________________________________________________________________________
+        average_rating = Review.objects.aggregate(Avg('rating'))['rating__avg']
+        prices = PricingPlan.objects.all()
+        ___________________________________________________________________________________________________________________
+        common_context = get_common_context()
+        __________________________________________________________________________________________________________________
+        total_reviews = review.count()
+
+         __________________________________________________________________________________________________________________
+        if average_rating is None:
+            average_rating = 0
+
+        # Calculate the number of full stars
+        full_stars = int(average_rating)
+
+        # Calculate the fractional part
+        fractional_part = average_rating - full_stars
+
+        # Determine if there is a quarter star
+        quarter_star = 1 if 0.25 <= fractional_part < 0.5 else 0
+
+        # Determine if there is a half star
+        half_star = 1 if fractional_part >= 0.5 else 0
+
+        # Number of empty stars
+        empty_stars = 5 - full_stars - half_star - quarter_star
+
+        context = {
+            **common_context,
+            'average_rating': average_rating,
+            'full_stars': full_stars,
+            'half_star': half_star,
+            'quarter_star': quarter_star,
+            'prices': prices,
+            'empty_stars': empty_stars,
+            'total_reviews': total_reviews,
+        }
+        return render(request, 'base/index1.html', context)
+
+
+
+
+_________________________________Html________________________________for Average rating__________________________________
+<p>      
+
+  <div class="star-rating">
+      <!-- Render full stars -->
+      {% for i in full_stars|star_range %}
+      <i class="fas fa-star filled fa-xl m-1"></i>
+      {% endfor %}
+      
+  
+      <!-- Render half star if present -->
+      {% if half_star or quarter_star %}
+      <i class="fas fa-star-half-alt filled fa-xl m-2"></i>
+      {% endif %}
+  
+      <!-- Render empty stars -->
+      {% for i in empty_stars|star_range %}
+      <i class="far fa-star fa-xl m-1"></i>
+      {% endfor %}
+  </div>
+  <h3>Average Rating: {{ average_rating|default:"0"|floatformat:1 }}</h3>
+  <small>{{total_reviews}} Ratings</small>
+  </p>

@@ -1,0 +1,487 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load custom_tags %}
+
+
+
+{% block content %}
+
+<div style="margin: 50px;"></div>
+
+
+<section id="intro">
+  <div class="container-lg ">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-5 text-center text-md-start">
+        <div class="display-2 ">
+          Display
+        </div>
+        <div class="display-5 text-muted"> Your coding skills</div>
+       
+        <p class="lead my-4 text-muted">
+         <i><strong class="fw-bold">'Net Ninja Pro'</strong></i> is a guide book that encourages programmers to unlock their technical skills. It helps them create appealing interfaces and innovative solutions that captivate users
+        </p>
+
+<p>      
+  <body>
+    <div class="star-rating">
+      <!-- Render full stars -->
+      {% for i in full_stars|star_range %}
+      <i class="fas fa-star filled fa-xl m-1"></i>
+      {% endfor %}
+      
+      <!-- Render half star if present -->
+      {% if half_star %}
+      <i class="fas fa-star-half-alt filled fa-xl m-1" style="color: var(--bs-primary);"></i>
+      {% endif %}
+      
+      <!-- Render empty stars -->
+      {% for i in empty_stars|star_range %}
+      <i class="far fa-star fa-xl m-1" style="color: var(--bs-primary);"></i>
+      {% endfor %}
+    </div>
+  </body>
+  <p> <h3> {{ average_rating|default:"0"|floatformat:1 }} <i class="fas fa-star filled m-1"></i></h3></p>
+ 
+  <div class="text-lg">{{total_reviews}} Ratings</div>
+  </p>
+
+       
+        <a href="#pricing" class="btn btn-outline-primary btn-lg"> Buy now</a>
+        <div class="lead  text-muted mt-3" > Web Development / Coding</div>
+
+        <!-- offcanvas -->
+        <a href="#sidebar" class="d-block mt-3" data-bs-toggle="offcanvas" role="button" aria-controls="sidebar">
+          Explore my other books
+        </a>
+      </div>
+
+      <div class="col-md-5 text-center d-md-block">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'base/price.html' %}
+
+
+<section id="topics">
+  <div class="container-md">
+    <div class="text-center">
+      <h2>Inside the book...</h2>
+      <p class="lead text-muted">A quick glance at topics you'll learn</p>
+    </div>
+
+  <div class="row my-5 g-5 justify-content-center align-items-center">
+    <div class="col-6 col-lg-4">
+      <img src="{% static 'images/kindle.png' %}" class="img-fluid" alt="">
+    </div>
+
+
+<div class="col-lg-6">
+
+
+    <!-- accordion -->
+    <div class="accordion" id="chapters">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter1" aria-expanded="true" aria-controls="chapter1">
+            <h6>Chapter 1- Introduction to Coding</h6>
+          </button>
+        </h2>
+
+        <div class="accordion-collapse collapse show"  aria-labelledby="heading1" data-bs-target="#chapters" id="chapter1">
+          <div class="accordion-body">
+            <p>Learn the basics of coding and why it's crucial in today's digital age. Explore programming languages, how they work, and the essential principles of coding.<a href=""><small>start reading</small></a></p>
+          </div>
+        </div>
+      </div>
+
+
+<!-- second accordion -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading2">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter2" aria-expanded="true" aria-controls="chapter2">
+            Chapter 2- Problem Solving and Algorithms
+          </button>
+        </h2>
+
+        <div class="accordion-collapse collapse"  aria-labelledby="heading1" data-bs-target="#chapters" id="chapter2">
+          <div class="accordion-body">
+            <p>Discover how to tackle problems by breaking them down into smaller, manageable pieces. Explore different problem-solving techniques and tools to make solving problems easier. See how these skills come to life in everyday situations. <a href=""><small>Start reading</small></a>
+
+</p>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Third accordion -->
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading3">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter3" aria-expanded="true" aria-controls="chapter3">
+            Chapter 3- Web Development Essentials
+          </button>
+        </h2>
+
+        <div class="accordion-collapse collapse"  aria-labelledby="heading3" data-bs-target="#chapters" id="chapter3">
+          <div class="accordion-body">
+            <p>Explore the foundations of web development, including HTML, CSS, and JavaScript.
+Learn how to create and structure web pages, style them with CSS, and add interactivity with JavaScript.
+            <a href=""><small>start reading</small></a></p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Fouth accordion -->
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading4">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter4" aria-expanded="true" aria-controls="chapter4">
+            Chapter 4: Application Development
+          </button>
+        </h2>
+
+        <div class="accordion-collapse collapse"  aria-labelledby="heading4" data-bs-target="#chapters" id="chapter4">
+          <div class="accordion-body">
+            <p>Learn about frameworks and tools used to build robust and scalable software applications
+            
+           .Gain insights into app deployment, testing, and debugging to ensure the quality and functionality of your applications.<a href=""><small>Start reading</small></a></p>
+          </div>
+        </div>
+      </div>
+
+ <!-- fifth accordion -->
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading5">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter5" aria-expanded="true" aria-controls="chapter5">
+         Chapter 5: Advanced Topics and Emerging Technologies
+          </button>
+        </h2>
+
+        <div class="accordion-collapse collapse"  aria-labelledby="heading1" data-bs-target="#chapters" id="chapter5">
+          <div class="accordion-body">
+            <p>Dive into advanced coding concepts, such as object-oriented programming (OOP), design patterns, and software architecture
+,explore emerging technologies and trends in the coding field, such as artificial intelligence (AI), machine learning, and blockchain <a href=""><small>Start reading</small></a></p>
+          </div>
+        </div>
+      </div>
+
+
+      
+    </div>
+</div>
+   <!-- end of accordions -->
+  </div>
+  </div>
+</section>
+
+
+
+
+{% include 'review_section.html' %}
+{% include 'Word_from_author.html' %}
+
+
+<style>.hover-zoom-container {
+  overflow: hidden;
+  width: 100%; /* Set the width to 100% of the parent container */
+  height: 0; /* Set the initial height to 0 */
+  padding-bottom: 75%; /* Set the aspect ratio to 4:3 (adjust this value to your desired aspect ratio) */
+  position: relative; /* Required for the child positioning */
+}
+
+.hover-zoom {
+  position: absolute; /* Position the image absolutely within the container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  object-fit: cover; /* Maintain aspect ratio and fill the container */
+}
+
+.hover-zoom-container:hover .hover-zoom {
+  transform: scale(1.1);
+}
+
+/* Additional styles for better visuals */
+.img-container {
+  margin: 8px;
+}
+</style>
+
+<section>
+  <div class="text-center">
+    <h2>Photo Speaks...</h2>
+    <p class="lead text-muted">Our Lagos Pythonista previews the book</p>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="img-container">
+        <div class="hover-zoom-container">
+          <img src="{% static 'images/Tolu.jpg' %}" class="shadow-1-strong rounded mb-4 hover-zoom" alt="Boat on Calm Water" />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="img-container">
+        <div class="hover-zoom-container">
+          <img src="{% static 'images/Tolu1.jpg' %}" class="shadow-1-strong rounded mb-4 hover-zoom" alt="Boat on Calm Water" />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="img-container">
+        <div class="hover-zoom-container">
+          <img src="{% static 'images/Tolu3.jpg' %}" class="shadow-1-strong rounded mb-4 hover-zoom" alt="Boat on Calm Water" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="img-container">
+        <div class="hover-zoom-container">
+          <img src="{% static 'images/Tolu4.jpg' %}" class="shadow-1-strong rounded mb-4 hover-zoom" alt="Boat on Calm Water" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="img-container">
+        <div class="hover-zoom-container">
+          <img src="{% static 'images/tloru.jpg' %}" class="shadow-1-strong rounded mb-4 hover-zoom" alt="Boat on Calm Water" />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="img-container">
+        <div class="hover-zoom-container">
+          <img src="{% static 'images/Tolu6.jpg' %}" class="shadow-1-strong rounded mb-4 hover-zoom" alt="Boat on Calm Water" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Stack Overflow -->
+<section>
+  <div class="text-center">
+    <h2>More Books from the Author </h2>
+    <i class="fa-solid fa-hand-point-right"></i>Swipe
+  </div>
+  
+  <div id="carouselExampleCaptions" class="carousel carousel-primary slide" data-bs-ride="false">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+             <div class="card-group m-2 p-2" style="height: 500px;">
+              <div class="card" >
+                <div style="height: 350px; overflow: hidden;">
+
+                  <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="...">
+                </div>
+               
+               <div class="card-body">
+               <h5 class="card-title">Mastering Modern JavaScript: From Basics to Advanced Techniques</h5>
+               <p><button type= "button" class="btn btn-primary">See More</button></p>
+               
+            </div>
+          </div>
+          <div class="card">
+            <div style="height: 350px; overflow: hidden;">
+
+              <img src="{% static 'images/New.jpg' %}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Python for Data Science: A Comprehensive Guide</h5>
+              <p><button type= "button" class="btn btn-primary">See More</button></p>
+          
+
+            </div>
+          </div>
+          <div class="card">
+            <div style="height: 350px; overflow: hidden;">
+
+              <img src="{% static 'images/ebook-cover.png' %}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">The Art of Clean Code: Best Practices for C++</h5>
+              {% comment %} <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p> {% endcomment %}
+              <p><button type= "button" class="btn btn-primary">See More</button></p>
+            </div>
+          </div>
+        </div>
+        
+            </div>
+            <div class="carousel-item">
+        <div class="card-group">
+          <div class="card">
+            <div style="height: 350px; overflow: hidden;">
+
+              <img src="{% static 'images/attach.jpg' %}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Building Scalable Applications with Go</h5>
+              {% comment %} <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> {% endcomment %}
+              <p><button type= "button" class="btn btn-primary">See More</button></p>
+            </div>
+          </div>
+          <div class="card">
+            <div style="height: 350px; overflow: hidden;">
+
+              <img src="{% static 'images/ebook-cover.png' %}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Full-Stack Web Development with React and Node.js</h5>
+              {% comment %} <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p> {% endcomment %}
+            </div>
+              <p><button type= "button" class="btn btn-primary">See More</button></p>
+          </div>
+          <div class="card">
+            <div style="height: 350px; overflow: hidden;">
+
+              <img src="{% static 'images/ebook-cover.png' %}" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Introduction to Machine Learning with Python and R</h5>
+              {% comment %} <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p> {% endcomment %}
+              <p><button type= "button" class="btn btn-primary">See More</button></p>
+            </div>
+          </div>
+        </div>
+        
+            </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div></section>
+<section>
+
+
+  
+{% include 'get_in_touch.html' %}
+
+
+
+
+
+
+<!-- About the author -->
+<section><div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'images/author.jpg' %}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">About the author</h4>
+        <p class="card-text">Chineme Okeke is a renowned Nigerian author known for his prolific contributions to the world of programming literature. With a passion for demystifying complex technical concepts, Okeke has established himself as a leading authority in the field, inspiring countless aspiring programmers worldwide.
+
+Having authored a staggering collection of ten insightful programming books, Okeke's works serve as indispensable guides for both novice and seasoned developers alike. His titles, including "Mastering Python: From Novice to Ninja", "Java Fundamentals: A Comprehensive Guide", and "Web Development Unleashed: Building Next-Generation Websites", have garnered widespread acclaim for their clarity, depth, and practicality.</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        <div><a href="https://web.facebook.com/"><i class="fa-brands fa-square-facebook fa-lg m-1"></i></a>  
+          <a href="twitter.com"><i class="    fa-brands fa-twitter fa-lg m-1"></i></a>
+          <a href="linkedin.com"><i class="fa-brands fa-linkedin fa-lg m-1"></i></div></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+
+<!-- Modal 1-->
+
+<section class="bg-light">
+  <div class="container">
+    <div class="text-center">
+      <h2>Stay in the loop</h2>
+      <p class="lead">Get the latest updates as they happen...</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <p class="text-muted my-4">Stay connected across various platforms, including social media, newsletters, and online forums, to ensure you never miss out on important updates and opportunities.</p>
+        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#reg-modal"> Register For Updates</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Modal 2-->
+
+<div class="modal fade" id="reg-modal" tabindex="1" aria-labelledby="modal-title" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title">
+          Get the latest updates
+        </h5>
+
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body"><p>We are always growing and improving, and we'd love to keep you updated along the way. Please provide your email address to receive our latest updates. Thank you for being part of our journey!</p>
+      
+      <label for="modal-email" class="form-label">Your email address</label></div>
+      <input type="email" class="form-control" id="modal-email" placeholder="e.g. Mario@example.com" >
+      <div class="modal-footer">
+        <button class="btn btn-outline-dark" data-bs-dismiss="modal" aria-label="Close">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+ <!-- side panel / offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebar-label">My Other Books</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In minima ducimus excepturi quasi tempore fugit quis voluptatibus aut error possimus, tenetur natus magni quam voluptatem quae eligendi repudiandae delectus eaque!</p>
+      <!-- dropdown -->
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="book-dropdown" data-bs-toggle="dropdown">
+          Choose a book title
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="book-dropdown">
+          <li><a class="dropdown-item" href="#">Become a React Superhero</a></li>
+          <li><a class="dropdown-item" href="#">Conquering Vue.js</a></li>
+          <li><a class="dropdown-item" href="#">Levelling up Your Next.js</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

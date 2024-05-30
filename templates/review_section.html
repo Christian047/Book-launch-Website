@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- reviews list -->
+
+
+  
+<section id="reviews" class="bg-altlight"> 
+  <div class="container-lg">
+    <div class="text-center">
+      <h2><i class="bi bi-stars text-altdark"></i> Reviews from Readers</h2>
+      <p class="lead">What my students have said about the book</p>
+    </div>
+
+    <div class="row justify-content-center my-5">
+      <div class="col-lg-8">
+        <div class="list-group">
+         {% for review in review|slice:":2" %}
+          <div class="list-group-item">
+            <div class="list-group item py-3">
+              <div class="pb-2">
+                <!-- Display star rating -->
+                {% for i in "12345"|make_list %}
+                  {% if forloop.counter <= review.rating %}
+                    <i class="bi bi-star-fill text-warning"></i>
+                  {% else %}
+                    <i class="bi bi-star text-warning"></i>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <h5 class="mb-1">{{ review.topic }}</h5>
+              <p class="mb-1">{{ review.body }}</p>
+              <small> <p class="mb-1">Review by {{ review.reviewer }}</p> </small>
+      
+              <div class="row">
+                {% if request.user == review.reviewer %}
+                 <div class="col"><small><a href="{% url 'delete_review' review.pk %}">Delete</a></small> <small class="mx-4"><a href="{% url 'update_review' review.pk %}">Update</a></small></div>
+                 {% endif %}
+                 <div class="col"></div>
+              <div class="col">{% include 'like/like.html' %}</div>
+            </div>
+              
+              
+            
+            </div>
+          
+          </div>
+          {% endfor %}
+          <div style="background-color: white;padding:  10px 10px "><p class="text-end mx-3"><a href="{% url 'show_review' %}">See more</a></p>
+          <p><a href="{% url 'review' %}" class="mt-4">Leave a review</a></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}
