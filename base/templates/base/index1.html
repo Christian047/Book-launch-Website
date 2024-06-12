@@ -23,7 +23,7 @@
         </p>
 
 <p>      
-  <body>
+
     <div class="star-rating">
       <!-- Render full stars -->
       {% for i in full_stars|star_range %}
@@ -40,11 +40,11 @@
       <i class="far fa-star fa-xl m-1" style="color: var(--bs-primary);"></i>
       {% endfor %}
     </div>
-  </body>
+
   <p> <h3> {{ average_rating|default:"0"|floatformat:1 }} <i class="fas fa-star filled m-1"></i></h3></p>
  
   <div class="text-lg">{{total_reviews}} Ratings</div>
-  </p>
+           </p>
 
        
         <a href="#pricing" class="btn btn-outline-primary btn-lg"> Buy now</a>
@@ -56,11 +56,17 @@
         </a>
       </div>
 
-      <div class="col-md-5 text-center d-md-block">
+      <div class="col-md-5 text-center d-none d-md-block">
 
+
+        <span title="Net Ninja Book Cover"> 
+        <img  class= "img-fluid" src="{% static 'images/ebook-cover.png' %}" alt=""></span>
       </div>
     </div>
+    
   </div>
+
+</div>
 </section>
 
 {% include 'base/price.html' %}

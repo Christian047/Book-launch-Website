@@ -1,5 +1,9 @@
 
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
+
 from dotenv import load_dotenv
 
 from pathlib import Path
@@ -17,7 +21,7 @@ SECRET_KEY = 'django-insecure-$w_k8b_okbj_80p3f-v!py^!*1kg*p&$v7)res!rvqq4de*!2j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -64,6 +68,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     "allauth.account.middleware.AccountMiddleware",
+     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -158,6 +163,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
@@ -212,4 +219,4 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-
+django_heroku.settings(locals())
